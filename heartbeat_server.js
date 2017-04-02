@@ -5,6 +5,7 @@ var express        = require('express');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
+var spawn = require('child_process').spawn;
 
 
 
@@ -47,6 +48,8 @@ function checkForHeartbeat(){
         }
     }, 5000);
 }
+
+spawn('node', ['check_in_server.js']);
 
 checkForHeartbeat();
 
