@@ -26,6 +26,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override')); 
 
+app.get('/heartbeat', function(req, res){
+    console.log('Gottem');
+});
+
 app.get('*', function(req, res){
     res.send('Twee hee hee');
 });
