@@ -35,12 +35,15 @@ app.get('/heartbeat', function(req, res){
     didWeGetABeat = true;
 });
 
+var check_in_server_process = spawn('node', ['check_in_server.js']);
+
 function checkForHeartbeat(){
     setTimeout(function(){
         if(!didWeGetABeat){
             console.log('Oh no! We didn\'t get a heartbeat!');
-            //TODO restart the heartbeat server
-            
+            //Restart the check in server by killing the old process and starting a new one
+            check_in_server_process.kill('SIGINT');
+            check_in_server_process = spawn('node', ['check_in_server.js']);
         } else {
             console.log('We got a beat, good.');
             didWeGetABeat = false;
@@ -49,7 +52,7 @@ function checkForHeartbeat(){
     }, 5000);
 }
 
-spawn('node', ['check_in_server.js']);
+
 
 checkForHeartbeat();
 
