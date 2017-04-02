@@ -47,8 +47,8 @@ function checkForHeartbeat(){
         } else {
             console.log('We got a beat, good.');
             didWeGetABeat = false;
-            checkForHeartbeat();
         }
+        checkForHeartbeat();
     }, 5000);
 }
 
