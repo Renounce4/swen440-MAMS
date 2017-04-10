@@ -32,7 +32,7 @@ function beatHeart() {
         console.log('Gonna beat your heart');
         http.get('http://localhost:8100/heartbeat')
         .on('error', function(error){
-            console.log('Yikes we got an error');
+            console.log('Yikes we got an error: ' + error.message);
         });
         beatHeart();
     }, 1000);

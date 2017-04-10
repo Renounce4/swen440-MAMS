@@ -32,6 +32,7 @@ var didWeGetABeat = false;
 
 app.get('/heartbeat', function(req, res){
     console.log('lub-dub');
+    res.send('hear you loud and clear')
     didWeGetABeat = true;
 });
 
@@ -46,7 +47,7 @@ function checkForHeartbeat(){
             console.log('Oh no! We didn\'t get a heartbeat!');
             //Restart the check in server by killing the old process and starting a new one
             check_in_server_process.kill('SIGINT'); //Kill process
-            check_in_server_process = spawn('node', ['check_in_server.js']); //Spawn new process
+            check_in_server_process = spawn('node', [__dirname + '/check_in_server.js']); //Spawn new process
             check_in_server_process.stdout.on('data', (data) => { //Set up to print output from new process
                 console.log(`Check In Server: ${data}`);
             });
