@@ -12,7 +12,7 @@ var spawn = require('child_process').spawn;
 // Configuration
 
 // Server port
-var port = process.env.PORT || 8080; 
+var port = process.env.PORT || 8100;
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
